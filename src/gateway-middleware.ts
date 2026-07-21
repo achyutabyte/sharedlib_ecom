@@ -1,6 +1,6 @@
 //import jwt express response next function
 
-import JWT from "jsonwebtoken";
+import * as JWT from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import { NotAuthorizedError } from "./error_handler";
 import { config } from "winston";
