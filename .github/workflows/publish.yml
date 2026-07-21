@@ -10,9 +10,10 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20.x"
           registry-url: "https://npm.pkg.github.com"
@@ -21,7 +22,7 @@ jobs:
       - run: npm run build
       - run: |
           echo @achyutabyte:https://npm.pkg.github.com/ > build/.npmrc
-          echo '//npm.pkg.github.com/:_authToken=${secrets.PACKAGE_TOKEN}' >> build/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}' >> build/.npmrc
       - run: npm publish --provenance --access public # this makes the package public
         working-directory: ./build
         env:
