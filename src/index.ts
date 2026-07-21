@@ -70,7 +70,7 @@ export {
   ISellerDocument,
 } from './interfaces/seller.interface';
 export { IEmailLocals } from './interfaces/email.interface';
-// export { uploads, videoUpload } from './interface/cloudinary-upload';
+export { uploads, videoUpload } from './cloudinary-upload';
 export {
   IErrorResponse,
   IError,
@@ -82,6 +82,7 @@ export {
   ServerError,
   ErrnoException
 } from './interfaces/error-handler';
+export { errorHandler } from './error_handler';
 export { verifyGatewayRequest } from './interfaces/gateway-middleware';
 export { winstonLogger } from './interfaces/logger';
 export {
