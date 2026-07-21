@@ -1,8 +1,23 @@
 import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { IError, IErrorResponse } from './interfaces/error-handler';
 
-export * from './interfaces/error-handler';
+
+
+
+export interface IErrorResponse {
+  message: string;
+  statusCode: number;
+  status: string;
+  comingFrom: string;
+  serializeErrors(): IError;
+}
+
+export interface IError {
+  message: string;
+  statusCode: number;
+  status: string;
+  comingFrom: string;
+}
 
 //custom error handler
 
