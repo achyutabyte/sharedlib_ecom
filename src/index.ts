@@ -13,8 +13,8 @@ export {
   IReduxLogout,
   IAuthResponse,
   IAuthUser,
-} from './interface/auth.interface';
-export { IBuyerDocument, IReduxBuyer } from './interface/buyer.interface';
+} from './interfaces/auth.interface';
+export { IBuyerDocument, IReduxBuyer } from './interfaces/buyer.interface';
 export {
   IConversationDocument,
   IMessageDocument,
@@ -23,7 +23,7 @@ export {
   IChatSellerProps,
   IChatBuyerProps,
   IChatMessageProps,
-} from './interface/chat.interface';
+} from './interfaces/chat.interface';
 export {
   GigType,
   ICreateGig,
@@ -35,7 +35,7 @@ export {
   IGigViewReviewsProps,
   IGigInfo,
   IGigTopProps,
-} from './interface/gig.interface';
+} from './interfaces/gig.interface';
 export {
   IOrderNotifcation,
   IOffer,
@@ -45,14 +45,14 @@ export {
   IOrderReview,
   IOrderMessage,
   IOrderDocument,
-} from './interface/order.interface';
+} from './interfaces/order.interface';
 export {
   IReviewMessageDetails,
   IRatingTypes,
   IRatingCategories,
   IRatingCategoryItem,
   IReviewDocument,
-} from './interface/review.interface';
+} from './interfaces/review.interface';
 export {
   ISearchResult,
   IHitsTotal,
@@ -60,7 +60,7 @@ export {
   IQueryString,
   ITerm,
   IPaginateProps,
-} from './interface/search.interface';
+} from './interfaces/search.interface';
 export {
   SellerType,
   ILanguage,
@@ -68,8 +68,8 @@ export {
   IEducation,
   ICertificate,
   ISellerDocument,
-} from './interface/seller.interface';
-export { IEmailLocals } from './interface/email.interface';
+} from './interfaces/seller.interface';
+export { IEmailLocals } from './interfaces/email.interface';
 // export { uploads, videoUpload } from './interface/cloudinary-upload';
 export {
   IErrorResponse,
@@ -81,13 +81,13 @@ export {
   FileTooLargeError,
   ServerError,
   ErrnoException
-} from './interface/error-handler';
-export { verifyGatewayRequest } from './interface/gateway-middleware';
-export { winstonLogger } from './interface/logger';
+} from './interfaces/error-handler';
+export { verifyGatewayRequest } from './interfaces/gateway-middleware';
+export { winstonLogger } from './interfaces/logger';
 export {
   firstLetterUppercase,
   lowerCase,
   toUpperCase,
   isEmail,
   isDataURL
-} from './interface/helpers';
+} from './interfaces/helpers';
