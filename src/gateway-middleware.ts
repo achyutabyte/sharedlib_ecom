@@ -7,7 +7,7 @@ import { config } from "winston";
 
 const tokens: string[] = ['auth', 'seller', 'gig', 'search', 'buyer', 'message', 'order', 'review'];
 
-export function verifyGatewayrequest(req: Request, res: Response, next: NextFunction): void {
+export function verifyGatewayRequest(req: Request, res: Response, next: NextFunction): void {
 
     const authHeader = req.headers?.gatewayToken;
 

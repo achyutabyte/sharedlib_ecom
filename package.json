@@ -35,6 +35,7 @@
     }
   },
   "dependencies": {
+    "@elastic/ecs-winston-format": "^1.5.3",
     "@elastic/elasticsearch": "^9.1.1",
     "cloudinary": "^2.1.0",
     "express": "^5.1.0",
@@ -42,13 +43,14 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.4",
     "typescript": "^5.4.3",
-    "winston": "^3.13.0",
-    "winston-elasticsearch": "^0.11.0"
+    "winston": "^3.19.0",
+    "winston-elasticsearch": "^0.17.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/preset-env": "^7.24.3",
     "@babel/preset-typescript": "^7.24.1",
+    "@types/elastic-apm-node": "^1.0.1",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.6"
   }

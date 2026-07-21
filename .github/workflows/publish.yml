@@ -16,13 +16,13 @@ jobs:
         with:
           node-version: "20.x"
           registry-url: "https://npm.pkg.github.com"
-          scope: "@uzochukwueddie"
+          scope: "@achyutabyte"
       - run: npm install
       - run: npm run build
-      # - run: |
-      #     echo @uzochukwueddie:https://npm.pkg.github.com/ > build/.npmrc
-      #     echo '//npm.pkg.github.com/:_authToken=${JOBBER_NPM_TOKEN}' >> build/.npmrc
+      - run: |
+          echo @achyutabyte:https://npm.pkg.github.com/ > build/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${secrets.PACKAGE_TOKEN}' >> build/.npmrc
       - run: npm publish --provenance --access public # this makes the package public
         working-directory: ./build
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
