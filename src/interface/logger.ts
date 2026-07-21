@@ -1,8 +1,13 @@
 import winston, { Logger } from 'winston';
-import { ElasticsearchTransformer, ElasticsearchTransport, LogData, TransformedData } from 'winston-elasticsearch';
+import { ElasticsearchTransport, ElasticsearchTransportOptions, LogData, Transformer } from 'winston-elasticsearch';
 
-const esTransformer = (logData: LogData): TransformedData => {
-  return ElasticsearchTransformer(logData);
+const esTransformer: Transformer = (logData: LogData) => {
+  return {
+    '@timestamp': logData.timestamp ? logData.timestamp : new Date().toISOString(),
+    severity: logData.level,
+    message: logData.message,
+    fields: logData.meta,
+  };
 }
 
 export const winstonLogger = (elasticsearchNode: string, name: string, level: string): Logger => {
@@ -25,7 +30,7 @@ export const winstonLogger = (elasticsearchNode: string, name: string, level: st
       }
     }
   };
-  const esTransport: ElasticsearchTransport = new ElasticsearchTransport(options.elasticsearch);
+  const esTransport: ElasticsearchTransport = new ElasticsearchTransport(options.elasticsearch as unknown as ElasticsearchTransportOptions);
   const logger: Logger = winston.createLogger({
     exitOnError: false,
     defaultMeta: { service: name },
