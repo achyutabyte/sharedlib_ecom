@@ -70,6 +70,16 @@ export {
   ISellerDocument,
 } from './interfaces/seller.interface';
 export { IEmailLocals } from './interfaces/email.interface';
+export { verifyGatewayRequest } from './interfaces/gateway-middleware';
+export { winstonLogger } from './interfaces/logger';
+export {
+  firstLetterUppercase,
+  lowerCase,
+  toUpperCase,
+  isEmail,
+  isDataURL
+} from './interfaces/helpers';
+
 export { uploads, videoUpload } from './cloudinary-upload';
 export {
   IErrorResponse,
@@ -82,13 +92,3 @@ export {
   ServerError,
   ErrnoException
 } from './interfaces/error-handler';
-export { errorHandler } from './error_handler';
-export { verifyGatewayRequest } from './interfaces/gateway-middleware';
-export { winstonLogger } from './interfaces/logger';
-export {
-  firstLetterUppercase,
-  lowerCase,
-  toUpperCase,
-  isEmail,
-  isDataURL
-} from './interfaces/helpers';

@@ -1,12 +1,80 @@
 import { Request, Response, NextFunction } from 'express';
-import { CustomError, IErrorResponse } from './interfaces/error-handler';
+import { StatusCodes } from 'http-status-codes';
+import { IError, IErrorResponse } from './interfaces/error-handler';
 
 export * from './interfaces/error-handler';
 
-// Custom error handler middleware
-export const errorHandler = (err: IErrorResponse, _req: Request, res: Response, next: NextFunction): void => {
-  if (err instanceof CustomError) {
-    res.status(err.statusCode).json(err.serializeErrors());
+//custom error handler
+
+export abstract class CustomError extends Error {
+  abstract statusCode: number;
+  abstract status: string;
+  comingFrom: string;
+
+  constructor(message: string, comingFrom: string) {
+    super(message);
+    this.comingFrom = comingFrom;
   }
-  next();
-};
+
+  serializeErrors(): IError {
+    return {
+      message: this.message,
+      statusCode: this.statusCode,
+      status: this.status,
+      comingFrom: this.comingFrom,
+    };
+  }
+}
+
+export class BadRequestError extends CustomError {
+  statusCode = StatusCodes.BAD_REQUEST;
+  status = 'error';
+
+  constructor(message: string, comingFrom: string) {
+    super(message, comingFrom);
+  }
+}
+
+export class NotFoundError extends CustomError {
+  statusCode = StatusCodes.NOT_FOUND;
+  status = 'error';
+
+  constructor(message: string, comingFrom: string) {
+    super(message, comingFrom);
+  }
+}
+
+export class NotAuthorizedError extends CustomError {
+  statusCode = StatusCodes.UNAUTHORIZED;
+  status = 'error';
+
+  constructor(message: string, comingFrom: string) {
+    super(message, comingFrom);
+  }
+}
+
+export class FileTooLargeError extends CustomError {
+  statusCode = StatusCodes.REQUEST_TOO_LONG;
+  status = 'error';
+
+  constructor(message: string, comingFrom: string) {
+    super(message, comingFrom);
+  }
+}
+
+export class ServerError extends CustomError {
+  statusCode = StatusCodes.SERVICE_UNAVAILABLE;
+  status = 'error';
+
+  constructor(message: string, comingFrom: string) {
+    super(message, comingFrom);
+  }
+}
+
+export interface ErrnoException extends Error {
+  error?: number;
+  code?: string;
+  path?: string;
+  syscall?: string;
+  stack?: string;
+}
